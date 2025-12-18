@@ -19,7 +19,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build project with Maven
+      - name: Build with Maven
         run: mvn clean package -DskipTests
 
       - name: Login to Docker Hub
@@ -29,7 +29,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/suivie_academique:latest .
+        run: docker build -t cephora52/suivie_academique:latest .
 
-      - name: Push Docker image to Docker Hub
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/suivie_academique:latest
+      - name: Push Docker image
+        run: docker push cephora52/suivie_academique:latest
