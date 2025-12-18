@@ -2,6 +2,9 @@ FROM eclipse-temurin:17-jdk AS build
 WORKDIR /app
 COPY . .
 
+# Ajoutez cette ligne pour corriger le problème de permission
+RUN chmod +x mvnw
+
 RUN ./mvnw clean package -DskipTests
 
 # Etape 2 : Executer l'application (JRE 17)
